@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  input#name(type='text')
+  input#new(type='button', value='new game')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='/socket.io/socket.io.js')
+  script.
+    var socket = io()
+    $('#test').click(function () {
+      socket.emit('broadcast', "test")
+    })
+
+    $('#new').click(function () {
+      socket.emit('new-game', {
+        name: $('#name').val()
+      })
+    })
