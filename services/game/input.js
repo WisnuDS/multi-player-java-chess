@@ -38,3 +38,5 @@ class InputHandler {
         return this.parse(checker.exec(value)[3])
     }
 }
+
+module.exports = InputHandler

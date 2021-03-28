@@ -1,27 +1,20 @@
-const Player = require('../game/player')
-const Room = require('../game/room')
+const Callback = require('../game/callback')
 
 class Socket{
     init(app){
-        console.log("connected")
-        this.sockets = []
-        this.rooms = []
         const io = require('socket.io')(app)
         io.on('connection',(socket)=>{
-            this.sockets[socket.id] = socket
+            //connect indicator
+            console.log("connected")
 
             socket.on('new-game', (data) => {
-                if (this.rooms.length === 0){
-                    this.rooms.push(new Room(new Player(data.name, socket, Player.STATUS_FIRST)))
-                }else{
-                    if (this.rooms[this.rooms.length - 1].isRoomAvailable()){
-                        this.rooms[this.rooms.length - 1].setSecondPlayer(new Player(data.name, socket, Player.STATUS_SECOND))
-                        this.rooms[this.rooms.length - 1].play(this.rooms.length - 1)
-                    }else{
-                        this.rooms.push(new Room(new Player(data.name, socket, Player.STATUS_FIRST)))
-                    }
-                }
+                Callback.newGame(data, socket)
             })
+
+            socket.on('in-game', (data) => {
+                Callback.inGame(data, socket)
+            })
+
         })
     }
 }
