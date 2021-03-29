@@ -12,7 +12,7 @@ server events are events that are available on the server. You can make a reques
 
 `new-game` is an event that can be used at the beginning of the game to create and join rooms. The data required for this request are as follows:
 
-```json
+```
 {
     name: 'Iqbal'
 }
@@ -23,7 +23,7 @@ server events are events that are available on the server. You can make a reques
 
 `in-game` is an event that is used during the game. All input logic and filtering is present at this event. The data required for this request are as follows:
 
-```json
+```
 {
     room_id : 12,
     player: {
@@ -39,7 +39,7 @@ server events are events that are available on the server. You can make a reques
 
 `chat` is an event that is used to have a conversation with an opponent. The data required for this request are as follows:
 
-```json
+```
 {
     room_id : 12,
     player: {
