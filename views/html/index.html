@@ -5,7 +5,9 @@
     <title>Testing</title>
 </head>
 <body>
-    <input type="button" id="test">
+    <input type="button" id="test"/><br>
+    <input type="text" id="move">
+    <input type="button" id="gas" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -13,6 +15,22 @@
         $('#id').click(function(){
             socket.emit('broadcast',"test")
         })
+
+        $('#gas').click(function(){
+            // socket.emit('in-game',{
+            //
+            // })
+        })
+
+        socket.on('new-game', (data) => {
+            console.log(data)
+        })
+
+        socket.on('in-game', (data)=>{
+            console.log(data)
+        })
+
+
     </script>
 </body>
 </html>

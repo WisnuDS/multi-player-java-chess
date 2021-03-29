@@ -3,8 +3,8 @@ const mapper = require('./mapper')
 class InputHandler {
     static PUT_TYPES = 'put'
     static MOVE_TYPES = 'move'
-    static movePattern = '/([a-cA-C][1-3])([-])([a-cA-C][1-3])/'
-    static putPattern = '/([a-cA-C][1-3])/'
+    static movePattern = '([a-cA-C][1-3])([-])([a-cA-C][1-3])'
+    static putPattern = '([a-cA-C][1-3])'
 
     static parse(value){
         return{
@@ -29,7 +29,7 @@ class InputHandler {
             return this.parse(checker.exec(value)[1])
         }else{
             const checker = new RegExp(InputHandler.putPattern,'g')
-            return this.parse(checker.exec(value)[1])
+            return this.parse(checker.exec(value)[0])
         }
     }
 

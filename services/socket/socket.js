@@ -15,6 +15,10 @@ class Socket{
                 Callback.inGame(data, socket)
             })
 
+            socket.on('chat', (data) => {
+                Callback.chatInGame(data, socket)
+            })
+
         })
     }
 }

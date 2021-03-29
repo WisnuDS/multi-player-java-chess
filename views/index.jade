@@ -2,17 +2,69 @@ extends layout
 
 block content
   input#name(type='text')
-  input#new(type='button', value='new game')
+  input#test(type='button',value='new game')
+  br
+  input#move(type='text')
+  input#gas(type='button',value='gas')
+  br
+  input#chat(type='text')
+  input#send(type='button',value='send')
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
   script(src='/socket.io/socket.io.js')
   script.
+    var GLOBAL_DATA = {
+      profile: {
+        name: '',
+        status: ''
+      },
+      game: {}
+    }
+
     var socket = io()
+
     $('#test').click(function () {
-      socket.emit('broadcast', "test")
+      GLOBAL_DATA.profile.name = $('#name').val()
+      socket.emit('new-game', {name: $('#name').val()})
     })
 
-    $('#new').click(function () {
-      socket.emit('new-game', {
-        name: $('#name').val()
+    $('#gas').click(function () {
+      socket.emit('in-game', {
+        room_id:GLOBAL_DATA.game.data.room_id,
+        player: GLOBAL_DATA.profile,
+        turn: $('#move').val()
       })
+    })
+
+    $('#send').click(function () {
+      socket.emit('chat', {
+        player: GLOBAL_DATA.profile,
+        message: $('#chat').val(),
+        room_id: GLOBAL_DATA.game.data.room_id
+      })
+    })
+
+    socket.on('new-game', (data) => {
+      GLOBAL_DATA.profile.status = data.data.players.first.status
+      GLOBAL_DATA.game = data
+    })
+
+    socket.on('play', (data) => {
+      if (GLOBAL_DATA.profile.status === ''){
+        GLOBAL_DATA.profile.status = data.data.players.second.status
+        GLOBAL_DATA.game = data
+      }else {
+        GLOBAL_DATA.game = data
+      }
+    })
+
+    socket.on('chat', (message) => {
+      console.log(message)
+    })
+
+    socket.on('in-game', (data) => {
+      console.log(data)
+    })
+
+    socket.on('error', (data) => {
+
     })

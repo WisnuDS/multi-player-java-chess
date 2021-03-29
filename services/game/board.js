@@ -24,7 +24,7 @@ class Board {
                 if (this.squares[i][j].isEmpty())
                     row.push(null)
                 else
-                    row.push(this.board[i][j].getPawn().getPlayer().getAllData())
+                    row.push(this.squares[i][j].getPawn().getPlayer().getAllData())
             }
             board.push(row)
         }

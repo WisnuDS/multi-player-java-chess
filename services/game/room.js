@@ -7,10 +7,11 @@ class Room {
     static IN_GAME = 'in_game'
     static AFTER_GAME = 'after'
 
-    constructor(player) {
+    constructor(player, id) {
+        this.id = id
         this.firstPlayer = player
         this.setCurrentPlayer(player)
-        this.statusRoom = Room.IN_GAME
+        this.statusRoom = Room.BEFORE_GAME
         this.winner = null
         this.finished = false
     }
@@ -63,27 +64,28 @@ class Room {
 
     play(id) {
         this.board = new Board
+        this.statusRoom = Room.IN_GAME
         this.broadcastAllPlayers('play', this.createMessage(id))
     }
 
     putPawn(to) {
-        if (this.board[to.x][to.y].isEmpty()) {
-            this.board[to.x][to.y].setPawn(new Pawn(this.currentPlayer, to.x, to.y))
+        if (this.board.squares[to.x][to.y].isEmpty()) {
+            this.board.squares[to.x][to.y].setPawn(new Pawn(this.currentPlayer, to.x, to.y))
             return true
         }
         return false
     }
 
     movePawn(from, to) {
-        if (this.board[from.x][from.y].isEmpty()){
+        if (this.board.squares[from.x][from.y].isEmpty()){
             return false
         }
 
-        if (this.board[from.x][from.y].getPlayer().getAllData().status !== this.currentPlayer.getAllData().status){
+        if (this.board.squares[from.x][from.y].getPawn().getPlayer().getAllData().status !== this.currentPlayer.getAllData().status){
             return false
         }
 
-        if (!this.board[to.x][to.y].isEmpty()){
+        if (!this.board.squares[to.x][to.y].isEmpty()){
             return false
         }
 
@@ -93,80 +95,80 @@ class Room {
             return false
         }
 
-        this.board[to.x][to.y].setPawn(this.board[from.x][from.y].getPawn())
-        this.board[from.x][from.y].empty()
+        this.board.squares[to.x][to.y].setPawn(this.board.squares[from.x][from.y].getPawn())
+        this.board.squares[from.x][from.y].empty()
     }
 
     checkWinner() {
         for (let i = 0; i < 3; i++) {
-            if (this.board[0][i] !== null && this.board[1][i] !== null && this.board[2][i] !== null){
-                if (this.board[0][i].getPlayer().getAllData().status === Player.STATUS_FIRST
-                    && this.board[1][i].getPlayer().getAllData().status === Player.STATUS_FIRST
-                    && this.board[2][i].getPlayer().getAllData().status === Player.STATUS_FIRST) {
-                    this.winner = this.board[0][i].getPlayer()
+            if (this.board.squares[0][i].getPawn() !== undefined && this.board.squares[1][i].getPawn() !== undefined && this.board.squares[2][i].getPawn() !== undefined){
+                if (this.board.squares[0][i].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                    && this.board.squares[1][i].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                    && this.board.squares[2][i].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST) {
+                    this.winner = this.board.squares[0][i].getPawn().getPlayer()
                     this.finished = true
                     this.statusRoom = Room.AFTER_GAME
                 }
 
-                if (this.board[0][i].getPlayer().getAllData().status === Player.STATUS_SECOND
-                    && this.board[1][i].getPlayer().getAllData().status === Player.STATUS_SECOND
-                    && this.board[2][i].getPlayer().getAllData().status === Player.STATUS_SECOND) {
-                    this.winner = this.board[0][i].getPlayer()
+                if (this.board.squares[0][i].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                    && this.board.squares[1][i].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                    && this.board.squares[2][i].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND) {
+                    this.winner = this.board.squares[0][i].getPawn().getPlayer()
                     this.finished = true
                     this.statusRoom = Room.AFTER_GAME
                 }
             }
 
-            if (this.board[i][0] !== null && this.board[i][1] !== null && this.board[i][2] !== null){
-                if (this.board[i][0].getPlayer().getAllData().status === Player.STATUS_FIRST
-                    && this.board[i][1].getPlayer().getAllData().status === Player.STATUS_FIRST
-                    && this.board[i][2].getPlayer().getAllData().status === Player.STATUS_FIRST) {
-                    this.winner = this.board[i][0].getPlayer()
+            if (this.board.squares[i][0].getPawn() !== undefined && this.board.squares[i][1].getPawn() !== undefined && this.board.squares[i][2].getPawn() !== undefined){
+                if (this.board.squares[i][0].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                    && this.board.squares[i][1].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                    && this.board.squares[i][2].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST) {
+                    this.winner = this.board.squares[i][0].getPawn().getPlayer()
                     this.finished = true
                     this.statusRoom = Room.AFTER_GAME
                 }
 
-                if (this.board[i][0].getPlayer().getAllData().status === Player.STATUS_SECOND
-                    && this.board[i][1].getPlayer().getAllData().status === Player.STATUS_SECOND
-                    && this.board[i][2].getPlayer().getAllData().status === Player.STATUS_SECOND) {
-                    this.winner = this.board[i][0].getPlayer()
+                if (this.board.squares[i][0].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                    && this.board.squares[i][1].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                    && this.board.squares[i][2].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND) {
+                    this.winner = this.board.squares[i][0].getPawn().getPlayer()
                     this.finished = true
                     this.statusRoom = Room.AFTER_GAME
                 }
             }
         }
 
-        if (this.board[0][0] !== null && this.board[1][1] !== null && this.board[2][2] !== null){
-            if (this.board[0][0].getPlayer().getAllData().status === Player.STATUS_FIRST
-                && this.board[1][1].getPlayer().getAllData().status === Player.STATUS_FIRST
-                && this.board[2][2].getPlayer().getAllData().status === Player.STATUS_FIRST) {
-                this.winner = this.board[0][0].getPlayer()
+        if (this.board.squares[0][0].getPawn() !== undefined && this.board.squares[1][1].getPawn() !== undefined && this.board.squares[2][2].getPawn() !== undefined){
+            if (this.board.squares[0][0].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                && this.board.squares[1][1].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                && this.board.squares[2][2].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST) {
+                this.winner = this.board.squares[0][0].getPawn().getPlayer()
                 this.finished = true
                 this.statusRoom = Room.AFTER_GAME
             }
 
-            if (this.board[0][0].getPlayer().getAllData().status === Player.STATUS_SECOND
-                && this.board[1][1].getPlayer().getAllData().status === Player.STATUS_SECOND
-                && this.board[2][2].getPlayer().getAllData().status === Player.STATUS_SECOND) {
-                this.winner = this.board[0][0].getPlayer()
+            if (this.board.squares[0][0].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                && this.board.squares[1][1].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                && this.board.squares[2][2].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND) {
+                this.winner = this.board.squares[0][0].getPawn().getPlayer()
                 this.finished = true
                 this.statusRoom = Room.AFTER_GAME
             }
         }
 
-        if (this.board[2][0] !== null && this.board[1][1] !== null && this.board[0][2] !== null){
-            if (this.board[2][0].getPlayer().getAllData().status === Player.STATUS_FIRST
-                && this.board[1][1].getPlayer().getAllData().status === Player.STATUS_FIRST
-                && this.board[0][2].getPlayer().getAllData().status === Player.STATUS_FIRST) {
-                this.winner = this.board[2][0].getPlayer()
+        if (this.board.squares[2][0].getPawn() !== undefined && this.board.squares[1][1].getPawn() !== undefined && this.board.squares[0][2].getPawn() !== undefined){
+            if (this.board.squares[2][0].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                && this.board.squares[1][1].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST
+                && this.board.squares[0][2].getPawn().getPlayer().getAllData().status === Player.STATUS_FIRST) {
+                this.winner = this.board.squares[2][0].getPawn().getPlayer()
                 this.finished = true
                 this.statusRoom = Room.AFTER_GAME
             }
 
-            if (this.board[2][0].getPlayer().getAllData().status === Player.STATUS_SECOND
-                && this.board[1][1].getPlayer().getAllData().status === Player.STATUS_SECOND
-                && this.board[0][2].getPlayer().getAllData().status === Player.STATUS_SECOND) {
-                this.winner = this.board[2][0].getPlayer()
+            if (this.board.squares[2][0].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                && this.board.squares[1][1].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND
+                && this.board.squares[0][2].getPawn().getPlayer().getAllData().status === Player.STATUS_SECOND) {
+                this.winner = this.board.squares[2][0].getPawn().getPlayer()
                 this.finished = true
                 this.statusRoom = Room.AFTER_GAME
             }
@@ -175,12 +177,12 @@ class Room {
         return false
     }
 
-    createMessage(id) {
+    createMessage() {
         if (this.statusRoom === Room.IN_GAME) {
             return {
                 status: this.statusRoom,
                 data: {
-                    room_id: id,
+                    room_id: this.id,
                     board: this.board.getReadableBoard(),
                     players: {
                         first: this.firstPlayer.getAllData(),
@@ -193,7 +195,7 @@ class Room {
             return {
                 status: this.statusRoom,
                 data: {
-                    room_id: id,
+                    room_id: this.id,
                     players: {
                         first: this.firstPlayer.getAllData(),
                     },
@@ -204,7 +206,7 @@ class Room {
             return {
                 status: this.statusRoom,
                 data: {
-                    room_id: id,
+                    room_id: this.id,
                     players: {
                         first: this.firstPlayer.getAllData(),
                         second: this.secondPlayer.getAllData()
@@ -222,7 +224,6 @@ class Room {
             this.currentPlayer = this.getFirstPlayer()
         }
     }
-
 }
 
 module.exports = Room
