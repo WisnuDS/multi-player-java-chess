@@ -1,8 +1,109 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+  --dark-brown: #3d1918;
+  --brown: #5c291c;
+  --light-brown: #71331e;
+  --light-brown-hover: #4e2314;
+  --yellow: #cd9e4c;
 }
 
-a {
-  color: #00B7FF;
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: var(--dark-brown);
+}
+
+.bg-dark-brown {
+  background-color: var(--dark-brown);
+}
+
+.bg-brown {
+  background-color: var(--brown);
+}
+
+.bg-light-brown {
+  background-color: var(--light-brown);
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+.form-control.bg-light-brown:focus {
+  background-color: var(--light-brown);
+  color: var(--yellow);
+  box-shadow: none;
+}
+
+.btn.bg-light-brown:hover {
+  background-color: var(--light-brown-hover);
+  color: var(--yellow);
+}
+
+.btn.bg-light-brown:focus {
+  box-shadow: none;
+}
+
+/* Custom CSS */
+.card__login {
+  top: 100%;
+}
+
+.live-chat {
+  height: 350px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.timeboard {
+  height: 25px;
+  width: 25px;
+}
+
+.time {
+  font-size: 30px;
+}
+
+.opacity-1 {
+  opacity:0.2!important;
+}
+
+@media (min-width: 576px) {
+  .btn__login {
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn__login {
+    width: 25% !important;
+  }
+
+  .timeboard {
+    height: 35px;
+    width: 35px;
+  }
+
+  .time {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  .timeboard {
+    height: 45px;
+    width: 45px;
+  }
+
+  .time {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .time {
+    font-size: 100px;
+  }
 }

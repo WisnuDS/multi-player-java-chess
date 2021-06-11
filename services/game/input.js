@@ -25,17 +25,16 @@ class InputHandler {
 
     static getFrom(value, type = InputHandler.MOVE_TYPES){
         if (type === InputHandler.MOVE_TYPES){
-            const checker = new RegExp(InputHandler.movePattern,'g')
-            return this.parse(checker.exec(value)[1])
+            let split = value.split('-')
+            return this.parse(split[0])
         }else{
-            const checker = new RegExp(InputHandler.putPattern,'g')
-            return this.parse(checker.exec(value)[0])
+            return this.parse(value)
         }
     }
 
     static getTo(value){
-        const checker = new RegExp(InputHandler.movePattern,'g')
-        return this.parse(checker.exec(value)[3])
+        let split = value.split('-')
+        return this.parse(split[1])
     }
 }
 

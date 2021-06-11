@@ -8,11 +8,11 @@ class Square{
     }
 
     isEmpty(){
-        return this.pawn == null || this.pawn === undefined
+        return this.pawn === undefined
     }
 
     empty(){
-        this.pawn = null
+        this.pawn = undefined
     }
 }
 

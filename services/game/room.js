@@ -97,6 +97,7 @@ class Room {
 
         this.board.squares[to.x][to.y].setPawn(this.board.squares[from.x][from.y].getPawn())
         this.board.squares[from.x][from.y].empty()
+        return true
     }
 
     checkWinner() {
@@ -211,6 +212,7 @@ class Room {
                         first: this.firstPlayer.getAllData(),
                         second: this.secondPlayer.getAllData()
                     },
+                    board: this.board.getReadableBoard(),
                     winner: this.winner.getAllData()
                 }
             }
@@ -219,8 +221,14 @@ class Room {
 
     switchPlayer(){
         if (this.currentPlayer.getAllData().status === Player.STATUS_FIRST){
+            this.getFirstPlayer().counter++
+            if (this.getFirstPlayer().counter === 3)
+                this.getFirstPlayer().phase = Player.PHASE_MOVE
             this.currentPlayer = this.getSecondPlayer()
         }else{
+            this.getSecondPlayer().counter++
+            if (this.getSecondPlayer().counter === 3)
+                this.getSecondPlayer().phase = Player.PHASE_MOVE
             this.currentPlayer = this.getFirstPlayer()
         }
     }

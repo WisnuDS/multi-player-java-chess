@@ -1,0 +1,66 @@
+body{
+    background-color: #3D1918;
+}
+
+.login .container{
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    position: absolute;
+    background-color: #5C291C;
+    width: 600px;
+    height: 300px;
+    left: 35%;
+    top: 30%;
+}
+
+.background-logo{
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    background-color: #71331E;
+    position: absolute;
+    width: 95%;
+    height: 140px;
+    left: 2%;
+    top: 5%;
+}
+
+.logo{
+    width: 95%;
+    height: 85%;
+    margin-left: 2.5%;
+    margin-top: 2%;
+}
+
+.login .container .form{
+    position: absolute;
+    width: 95%;
+    height: 140px;
+    left: 2%;
+    top: 57%;
+}
+
+#nickname{
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    background-color: #71331E;
+    color: #CD9E4C;
+    width: 550px;
+    height: 45px;
+    padding-left: 20px;
+}
+
+#button{
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    background-color: #71331E;
+    color: #CD9E4C;
+    width: 20%;
+    height: 45px;
+    margin-top: 3%;
+    margin-left: 40%;
+    cursor: pointer;
+}
+
+#button:hover{
+    background-color: #4e2314;
+}

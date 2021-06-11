@@ -1,0 +1,346 @@
+/*.game .container{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    background-color: #3D1918;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.left-col{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    position: absolute;*/
+/*    background-color: #5C291C;*/
+/*    width: 420px;*/
+/*    height: 920px;*/
+/*    left: 1.5%;*/
+/*    top: 3%;*/
+/*}*/
+
+/*.right-col{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    position: absolute;*/
+/*    background-color: #5C291C;*/
+/*    width: 420px;*/
+/*    height: 920px;*/
+/*    right: 1.5%;*/
+/*    top: 3%;*/
+/*}*/
+
+/*.board{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    position: absolute;*/
+/*    width: 900px;*/
+/*    height: 900px;*/
+/*    left: 25.5%;*/
+/*    top: 4%;*/
+/*}*/
+
+/*.player2{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width:90%;*/
+/*    height: 200px;*/
+/*    left: 4.5%;*/
+/*    top: 2%;*/
+/*}*/
+
+/*.player1{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width:90%;*/
+/*    height: 200px;*/
+/*    left: 4.5%;*/
+/*    top: 60%;*/
+/*}*/
+
+/*.profil{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 50%;*/
+/*    position: absolute;*/
+/*    width: 95px;*/
+/*    height: 95px;*/
+/*    left: 37.5%;*/
+/*    top: 13%;*/
+/*}*/
+
+/*.name{*/
+/*    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+/*    font-size: 25px;*/
+/*    color: #CD9E4C;*/
+/*    text-align: center;*/
+/*    margin-top: 150px;*/
+/*}*/
+
+/*.timeboard2{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 90%;*/
+/*    height: 100px;*/
+/*    left: 4.5%;*/
+/*    top: 29%;*/
+/*}*/
+
+/*.timeboard1{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 90%;*/
+/*    height: 100px;*/
+/*    left: 4.5%;*/
+/*    top: 43%;*/
+/*}*/
+
+/*.color1{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 5px;*/
+/*    background-color: #CD9E4C;*/
+/*    position: absolute;*/
+/*    width: 45px;*/
+/*    height: 45px;*/
+/*    left: 5%;*/
+/*    bottom: 28%;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.color1:hover{*/
+/*    background-color: #70572b;*/
+/*}*/
+
+/*.color2{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 5px;*/
+/*    background-color: #CD9E4C;*/
+/*    position: absolute;*/
+/*    width: 45px;*/
+/*    height: 45px;*/
+/*    left: 5%;*/
+/*    bottom: 28%;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.color2:hover{*/
+/*    background-color: #70572b;*/
+/*}*/
+
+/*.time{*/
+/*    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+/*    font-weight: bold;*/
+/*    color: #CD9E4C;*/
+/*    position: absolute;*/
+/*    font-size: 100px;*/
+/*    right: 10%;*/
+/*    top: -5%;*/
+/*}*/
+
+/*.home{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 90%;*/
+/*    height: 95px;*/
+/*    left: 4.5%;*/
+/*    top: 87%;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.home:hover{*/
+/*    background-color: #4e2314;*/
+/*}*/
+
+/*.icon-home{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    position: absolute;*/
+/*    width: 60px;*/
+/*    height: 60px;*/
+/*    left: 42%;*/
+/*    top: 15%;*/
+/*}*/
+
+/*.icon-game{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    position: absolute;*/
+/*    width: 90%;*/
+/*    height: 250px;*/
+/*    left: 4.5%;*/
+/*    top: 2%;*/
+/*}*/
+
+/*.live-chat{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width:90%;*/
+/*    height: 350px;*/
+/*    left: 4.5%;*/
+/*    bottom: 12%;*/
+/*    overflow: scroll;*/
+/*    overflow-x: hidden;*/
+/*}*/
+
+/*.right-col .form{*/
+/*    position: absolute;*/
+/*    width: 90%;*/
+/*    left: 4.5%;*/
+/*    bottom: 6%;*/
+/*}*/
+
+/*#text{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    color: #CD9E4C;*/
+/*    width: 243px;*/
+/*    height: 5px;*/
+/*    padding: 5%;*/
+/*}*/
+
+/*.send{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    color: #CD9E4C;*/
+/*    width: 90px;*/
+/*    height: 45px;*/
+/*    text-align: center;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.send:hover{*/
+/*    background-color: #4e2314;*/
+/*}*/
+
+/*#message{*/
+/*    color: #CD9E4C;*/
+/*    font-size: 14px;*/
+/*    margin-top: 3%;*/
+/*    margin-left: 3%;*/
+/*}*/
+
+/*.bubble{*/
+/*    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+/*    position: absolute;*/
+/*    border-radius: 5px;*/
+/*    background-color: #5C291C;*/
+/*    color: #CD9E4C;*/
+/*    width: 130px;*/
+/*    left: 63%;*/
+/*    top: 5%;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.a1{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    left: 0;*/
+/*    bottom: 0;*/
+/*}*/
+
+/*.a2{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    left: 0;*/
+/*    bottom: 34.4%;*/
+/*}*/
+
+/*.a3{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*}*/
+
+/*.b1{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    left: 34.4%;*/
+/*    bottom: 0;*/
+/*}*/
+
+/*.b2{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    left: 34.4%;*/
+/*    bottom: 34.4%;*/
+/*}*/
+
+/*.b3{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    left: 34.4%;*/
+/*    top: 0;*/
+/*}*/
+
+/*.c1{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*}*/
+
+/*.c2{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    right: 0;*/
+/*    bottom: 34.4%;*/
+/*}*/
+
+/*.c3{*/
+/*    border: 1px solid rgba(0, 0, 0, 0);*/
+/*    border-radius: 10px;*/
+/*    background-color: #71331E;*/
+/*    position: absolute;*/
+/*    width: 280px;*/
+/*    height: 280px;*/
+/*    right: 0;*/
+/*    top: 0;*/
+/*}*/
+
+/*.p{*/
+/*    border-radius: 100%;*/
+/*    height: 220px;*/
+/*    width: 220px;*/
+/*    margin-left: 30px;*/
+/*    margin-top: 25px;*/
+/*}*/

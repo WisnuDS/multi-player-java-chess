@@ -47,13 +47,12 @@ class Callback{
                             socket.emit('error',Callback.createErrorMessage("Invalid move"))
                         }
                     }else{
-                        console.log("test")
                         socket.emit('error',Callback.createErrorMessage("Invalid input"))
                     }
                 }else{
                     if (Input.isValidInput(data.turn)){
                         let from = Input.getFrom(data.turn)
-                        let to = Input.getTo(data)
+                        let to = Input.getTo(data.turn)
                         let indicator = room.movePawn(from, to, player)
                         if (indicator){
                             let findWinner = room.checkWinner()
@@ -64,10 +63,9 @@ class Callback{
                                 room.broadcastAllPlayers('in-game', room.createMessage(data.room_id))
                             }
                         }else{
-                            socket.emit('error',Callback.createError("Invalid Move"))
+                            socket.emit('error',Callback.createErrorMessage("Invalid Move"))
                         }
                     }else{
-                        console.log("1")
                         socket.emit('error',Callback.createErrorMessage("Invalid Input"))
                     }
                 }
@@ -80,12 +78,13 @@ class Callback{
     }
 
     static chatInGame(data, socket) {
+        console.log(data)
         if (Callback.rooms.length > data.room_id ){
             let room = Callback.rooms[data.room_id]
             if (data.player.status === Player.STATUS_FIRST){
-                room.getSecondPlayer().socket.emit('chat', data.message)
+                room.getSecondPlayer().socket.emit('chat', data)
             }else{
-                room.getFirstPlayer().socket.emit('chat', data.message)
+                room.getFirstPlayer().socket.emit('chat', data)
             }
         }else{
             socket.emit('error', Callback.createErrorMessage("Invalid Room"))

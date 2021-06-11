@@ -9,6 +9,7 @@ class Player{
         this.socket = socket
         this.status = status
         this.phase = Player.PHASE_PUT
+        this.counter = 0
     }
 
     getPhase() {
